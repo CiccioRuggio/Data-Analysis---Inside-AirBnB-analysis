@@ -1,5 +1,7 @@
 # Airbnb a Catania: analisi del mercato degli affitti brevi
 
+🇮🇹 Italiano · [🇬🇧 English](#airbnb-in-catania-analysis-of-the-short-term-rental-market)
+
 Progetto finale del corso di **Data Analysis**. Analizziamo gli annunci Airbnb di Catania (4.669 annunci) con i dati pubblici di [Inside Airbnb](https://insideairbnb.com/get-the-data/) per capire come si distribuisce il mercato, quanto pesa la posizione sul prezzo e quali strutture lavorano di più.
 
 ## Domande a cui risponde l'analisi
@@ -81,11 +83,111 @@ Python, pandas, NumPy, matplotlib, seaborn, folium.
 
 Progetto del corso di Data Analysis, anno accademico 2026/27.
 
--*Francesco Ruggeri*
--*Pierfrancesco Blancato*
--*Marco Ventimiglia*
--*Diego Valenti*
+- Francesco Ruggeri
+- Pierfrancesco Blancato
+- Marco Ventimiglia
+- Diego Valenti
 
 ## Licenza
 
-Il codice è rilasciato con licenza MIT (aggiungete un file `LICENSE` se volete usarla). I dati restano soggetti alla licenza CC BY 4.0 di Inside Airbnb.
+Questo repository è pubblicato **solo a scopo di consultazione**. Il codice e i testi del progetto sono degli autori e non possono essere copiati, modificati o ridistribuiti senza il loro permesso. I dati restano soggetti alla licenza CC BY 4.0 di Inside Airbnb.
+
+---
+
+# Airbnb in Catania: analysis of the short-term rental market
+
+[🇮🇹 Italiano](#airbnb-a-catania-analisi-del-mercato-degli-affitti-brevi) · 🇬🇧 English
+
+Final project for the **Data Analysis** course.
+
+We analyse the Airbnb listings of Catania (4,669 listings) using the public data from [Inside Airbnb](https://insideairbnb.com/get-the-data/), to understand how the market is distributed, how much location affects price and which properties perform best.
+
+## Questions the analysis answers
+
+- How are the listings composed by **type** (entire homes, private rooms) and by **size** (small 1-2 guests, medium 3-4, large 5+)?
+- How much does the **price** change between size classes?
+- How much does **proximity to the centre** matter for price and reviews?
+- How have **demand and supply** evolved since 2015, and how seasonal is the market?
+- Which properties **performed best over the last year** and where are they?
+
+## Main results
+
+- **The market is dominated by entire homes**: 72.6% of listings, against 27.3% private rooms. Wi-Fi, air conditioning and a kitchen are present in over 80% of listings.
+- **Tourism is concentrated in the centre**: about 61% of listings are within 1 km of Piazza Duomo and about 78% of reviews come from there. The centre's price premium, for the same size class, is however modest (median +2-8% within 1.5 km).
+- **Size drives price**: median of 82 USD (small), 93 (medium) and 134 (large) per night, excluding listings above 500 USD.
+- **A seasonal and growing market**: about 76% of yearly reviews arrive between April and October. Since 2015 reviews have grown by about ×31 and listings by about ×29, but since 2022 it is supply that has been growing faster.
+- **A few listings generate a lot of activity**: over the last year 57.7% of listings are active and the top 10% produce more than half of the reviews.
+
+The full reading of the results is in the last section of the notebook (*13. Lettura Conclusiva*, in Italian).
+
+## Notebook contents
+
+| Section | Topic |
+|---|---|
+| 0-1 | Data loading, cleaning and checks |
+| 2 | Suspicious cases and size classes |
+| 3-4 | Prices by size class |
+| 5-6 | Geospatial analysis and interactive map |
+| 7 | Performance (reviews as a proxy for demand) |
+| 8 | Time analysis and seasonality |
+| 9 | Price distribution and outliers |
+| 10-11 | Catania in the regional context and market composition |
+| 12 | Best-performing listings over the last year (heatmap and yearly maps) |
+| 13 | Concluding remarks |
+
+The notebook text and chart labels are in Italian.
+
+## Data
+
+The data is **not included** in the repository. Download it from [Inside Airbnb](https://insideairbnb.com/get-the-data/) (Sicily section, files `listings.csv` and `reviews.csv`) and save it in the `data/` folder:
+
+```
+data/
+├── listings.csv
+└── reviews.csv
+```
+
+The analysis uses the data for Catania (`neighbourhood_cleansed == "Catania"`). The most recent review in the files is dated 28/09/2026, and results may change with a more recent version.
+
+Source: Inside Airbnb, [Creative Commons CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) licence.
+
+## How to run the project
+
+1. Clone the repository and place the two files in `data/`.
+2. Install the libraries:
+   ```bash
+   pip install pandas numpy matplotlib seaborn folium jupyter
+   ```
+3. Open the notebook and, in the first cell, replace the Google Drive loading with local paths:
+   ```python
+   listings = pd.read_csv("data/listings.csv")
+   reviews = pd.read_csv("data/reviews.csv")
+   ```
+4. Run all the cells from top to bottom. The cells must be run in order because each section uses variables created earlier.
+
+The notebook was written in Google Colab: if you open it there, mount Drive and keep the original paths.
+
+## Limitations of the analysis
+
+- **Reviews are a proxy** for demand: they do not measure bookings or occupancy.
+- **Closed listings** do not appear in the current data: historical supply is reconstructed from the year of the first review and may be underestimated (survivorship bias).
+- **2026 is incomplete** (the data runs to September) and is therefore excluded from year-to-year comparisons.
+- **Missing prices** (about 385 listings) and **outliers** above 500 USD are marked with flags, not deleted, and are excluded from price comparisons.
+- **Listing locations** are approximated by Airbnb to protect hosts' privacy.
+
+## Tools
+
+Python, pandas, NumPy, matplotlib, seaborn, folium.
+
+## Authors
+
+Project for the Data Analysis course, academic year 2026/27.
+
+- Francesco Ruggeri
+- Pierfrancesco Blancato
+- Marco Ventimiglia
+- Diego Valenti
+
+## Licence
+
+This repository is published **for viewing only**. The code and texts of the project belong to the authors and may not be copied, modified or redistributed without their permission. The data remains subject to Inside Airbnb's CC BY 4.0 licence.
