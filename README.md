@@ -81,10 +81,7 @@ Python, pandas, NumPy, matplotlib, seaborn, folium.
 
 Progetto del corso di Data Analysis, anno accademico 2026/27.
 
-- Francesco Ruggeri
-- Pierfrancesco Blancato
-- Diego Valenti
-- Marco Ventimiglia
+
 
 ## Licenza
 
